@@ -80,8 +80,9 @@ export default class accountList extends Component {
             <Button type='primary' style={{ marginBottom: 10 }} onClick={()=>{this.setState({ visible:true })}}>新增账号</Button>
             {this.renderTable()}
             <Modal
-            visible={this.state.visible}
-            onCancel={()=>{this.setState({ visible: false })}}
+                visible={this.state.visible}
+                onCancel={()=>{this.setState({ visible: false })}}
+                title="新增账号"
             >
                 <Form>
                     <Row>
