@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-import { Button } from 'antd';
+import React, { Component } from 'react';
+import { Router, Route, Redirect, Switch } from 'react-router-dom';
+import AccountManager from 'pages/accountManager/view';
 
-export default class app extends Component {
-  render() {
-    return (
-      <div>
-        <Button type='primary'>按钮</Button>
-      </div>
-    )
-  }
-}
+const App = ({ history }) => (
+  <Router history={history}>
+      <Switch>
+        <Redirect path="/" exact to="/accountManager" />
+        <Route path="/accountManager" component={AccountManager} />
+      </Switch>
+  </Router>
+)
+export default App;

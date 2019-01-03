@@ -5,6 +5,8 @@
           "libraryName": "antd",
           "libraryDirectory": "es",
           "style": true
-        }]
+        }],
+        [ "transform-decorators-legacy"],
+        ["transform-runtime"]
     ]
 }
