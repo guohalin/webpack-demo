@@ -29,23 +29,41 @@ module.exports = {
         }),
         new CleanWebpackPlugin(['dist']),
         new webpack.NamedModulesPlugin(),
-        new webpack.HotModuleReplacementPlugin()   // 模块热替换
+        new webpack.HotModuleReplacementPlugin(),   // 模块热替换
+        new webpack.ProvidePlugin({
+            "React": "react",
+        }),
     ],
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
+    // externals: {
+    //     "react": "React",
+    //     "react-dom": "ReactDOM"
+    // },
     module: {
         // test 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件。
         // use 属性，表示进行转换时，应该使用哪个 loader。
         rules: [
             {
                 test: /\.(jsx|js)$/,
-                use:[{
-                    loader:"babel-loader",
-                }],
+                use:[
+                    {
+                        loader:"babel-loader",
+                    }
+                ],
                 exclude:/node_modules/
             },
+            {
+                test: /\.tsx?$/,
+                use:[
+                        {
+                            loader:'awesome-typescript-loader'
+                        }
+                ]
+            },
+            { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
             {
                 test: /\.(css|less)$/,
                 use: [
