@@ -9,7 +9,7 @@ process.env.NODE_ENV="development";
 module.exports = {
     mode: 'development',
     // entry: './src/index.js',
-    entry: path.resolve(__dirname, "../src/index.js"),
+    entry: path.resolve(__dirname, "../src/webpackTest.js"),
     devServer: {
         contentBase: './dist',
         hot: true,
@@ -42,7 +42,7 @@ module.exports = {
     //     "react": "React",
     //     "react-dom": "ReactDOM"
     // },
-    module: {
+    module: {  //对相应的文件怎么进行打包
         // test 属性，用于标识出应该被对应的 loader 进行转换的某个或某些文件。
         // use 属性，表示进行转换时，应该使用哪个 loader。
         rules: [
@@ -84,7 +84,9 @@ module.exports = {
             {
                 test: /\.(png|svg|jpg|gif)$/,
                 use: [
-                    'file-loader'
+                    {
+                        loader:'file-loader'
+                    }
                 ]
             },
             {
@@ -103,6 +105,7 @@ module.exports = {
             utils: path.resolve(__dirname, '../src/utils'),
             pages: path.resolve(__dirname, '../src/pages'),
             components: path.resolve(__dirname, '../src/components')
-        }
+        },
+        extensions: ['.js', '.json', '.ts', '.jsx', '.tsx']
     }
 };
