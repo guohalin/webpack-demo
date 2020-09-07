@@ -5,12 +5,18 @@
  * @author: halin.guo
  * @description: 文件描述
  */
+
+import gift from './gift.png';
+import styles from './webpackTest.css';
 function Header(){
     var dom = document.getElementById('root');
     var sidebar = document.createElement('div');
-    sidebar.innerText = 'this is header11';
+    sidebar.innerText = 'this is header bundlehsja ';
+    var img = document.createElement('img');
+    img.src = gift;
+    img.classList.add(styles.tupian);
     dom.append(sidebar)
-    return {}
+    dom.append(img)
 }
 
 export default Header;
